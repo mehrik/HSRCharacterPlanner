@@ -1,15 +1,34 @@
 import React from 'react';
-import { Grid } from "@mui/material";
+import { Grid, Button } from "@mui/material";
 
-import { Wrapper } from './BodyStyles';
+import { Summary } from '../Summary/Summary';
+
+import { Wrapper, Title, Buttons } from './BodyStyles';
 
 export const Body = () => {
   return (
     <Wrapper>
-      <Grid>
-
+      <Grid container spacing={2}>
+        <Grid item xs={9}>
+          <Title>
+            <h1>Pom Pom Planner</h1>
+          </Title>
+        </Grid>
+        <Grid item xs={3}>
+          <Buttons>
+            <Button variant="contained">Add Character</Button>
+            <Button variant="contained">Add Light Cone</Button>
+          </Buttons>
+        </Grid>
       </Grid>
-      <h1> I am the body </h1>
+      <Grid container spacing={2}>
+        <Grid item xs={3}>
+          <Summary />
+        </Grid>
+        <Grid item xs={9}>
+          Character Planner goes here
+        </Grid>
+      </Grid>
     </Wrapper>
   )
 }

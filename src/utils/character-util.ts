@@ -1,5 +1,3 @@
-import characters from "../resources/index_new/en/characters.json";
-
 export type Eidolons = {
   id: string;
   name: string;
@@ -44,7 +42,7 @@ export type Character = {
 const BLACKLIST_CHARACTERS = ["8001", "8002", "8003", "8004", "9100"];
 
 export const CharacterUtil = {
-  getAllCharacters(): Character[] {
+  getAllCharacters(characters: any): Character[] {
     const keys = Object.keys(characters);
     return keys
       .map((key) => (characters as any)[key])

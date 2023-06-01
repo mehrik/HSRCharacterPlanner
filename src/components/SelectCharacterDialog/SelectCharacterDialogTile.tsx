@@ -1,7 +1,8 @@
 import React from "react";
-import { Avatar } from "@mui/material";
 
 import { Character } from "../../utils/character-util";
+
+import { Tile, CharacterName } from "./SelectCharacterDialogTileStyles";
 
 export const SelectCharacterDialogTile = ({
   character,
@@ -10,7 +11,8 @@ export const SelectCharacterDialogTile = ({
 }) => {
   return (
     <div>
-      <Avatar alt={character.name} src={character.preview} />
+      <Tile bgImg={`/resources/${character.preview}`} />
+      <CharacterName>{character.name}</CharacterName>
     </div>
   );
 };

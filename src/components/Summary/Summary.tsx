@@ -1,13 +1,11 @@
-import React from 'react';
+import React from "react";
 
-import { Wrapper, Title } from './SummaryStyles';
+import { Wrapper, Title } from "./SummaryStyles";
 
 export const Summary = () => {
   return (
     <Wrapper>
-      <Title>
-        SUMMARY
-      </Title>
+      <Title>SUMMARY</Title>
     </Wrapper>
-  )
-}
+  );
+};

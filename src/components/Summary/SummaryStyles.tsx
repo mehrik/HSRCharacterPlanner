@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  background: #1B1B1B;
+  background: #1b1b1b;
   border-radius: 16px;
   height: 100%;
   padding: 30px 32px;
@@ -9,9 +9,9 @@ export const Wrapper = styled.div`
 `;
 
 export const Title = styled.div`
-  color: #FFFFFF;
+  color: #ffffff;
   display: flex;
   justify-content: flex-start;
   font-weight: 400;
   font-size: 24px;
-`
+`;

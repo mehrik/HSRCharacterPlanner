@@ -1,4 +1,4 @@
-import characters from '../resources/index_new/en/characters.json';
+import characters from "../resources/index_new/en/characters.json";
 
 type Eidolons = {
   id: string;
@@ -16,7 +16,7 @@ type Skill = {
   abridged_effect: string;
   element_type: string;
   icon: string;
-}
+};
 
 type Character = {
   id: string;
@@ -39,19 +39,15 @@ type Character = {
   portrait: string;
   character_overview: string;
   character_material: string;
-}
+};
 
-const BLACKLIST_CHARACTERS = [
-  '8001',
-  '8002',
-  '8003',
-  '8004',
-  '9100'
-]
+const BLACKLIST_CHARACTERS = ["8001", "8002", "8003", "8004", "9100"];
 
 export const CharacterUtil = {
   getAllCharacters(): Character[] {
     const keys = Object.keys(characters);
-    return keys.map(key => (characters as any)[key]).filter(character => !BLACKLIST_CHARACTERS.includes(character.id))
-  }
-}
+    return keys
+      .map((key) => (characters as any)[key])
+      .filter((character) => !BLACKLIST_CHARACTERS.includes(character.id));
+  },
+};

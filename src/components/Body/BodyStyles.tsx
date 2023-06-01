@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Title = styled.div`
-  color: #FFFFFF;
+  color: #ffffff;
   display: flex;
   justify-content: flex-start;
 `;

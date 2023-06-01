@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { Grid, Button } from "@mui/material";
 
-import { Summary } from '../Summary/Summary';
-import { SelectCharacterDialog } from '../SelectCharacterDialog/SelectCharacterDialog';
+import { Summary } from "../Summary/Summary";
+import { SelectCharacterDialog } from "../SelectCharacterDialog/SelectCharacterDialog";
 
-import { Wrapper, Title, Buttons } from './BodyStyles';
+import { Wrapper, Title, Buttons } from "./BodyStyles";
 
 export const Body = () => {
   const [isCharacterDialogOpen, setIsCharacterDialogOpen] = useState(false);
@@ -19,7 +19,12 @@ export const Body = () => {
         </Grid>
         <Grid item xs={3}>
           <Buttons>
-            <Button variant="contained" onClick={() => setIsCharacterDialogOpen(true)}>Add Character</Button>
+            <Button
+              variant="contained"
+              onClick={() => setIsCharacterDialogOpen(true)}
+            >
+              Add Character
+            </Button>
             <Button variant="contained">Add Light Cone</Button>
           </Buttons>
         </Grid>
@@ -32,7 +37,10 @@ export const Body = () => {
           Character Planner goes here
         </Grid>
       </Grid>
-      <SelectCharacterDialog isOpen={isCharacterDialogOpen} handleClose={() => setIsCharacterDialogOpen(false)} />
+      <SelectCharacterDialog
+        isOpen={isCharacterDialogOpen}
+        handleClose={() => setIsCharacterDialogOpen(false)}
+      />
     </Wrapper>
-  )
-}
+  );
+};

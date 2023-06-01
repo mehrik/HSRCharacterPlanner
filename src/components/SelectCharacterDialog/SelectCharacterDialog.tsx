@@ -1,7 +1,12 @@
 import React from 'react';
 import { Grid, Dialog, DialogContent, TextField } from '@mui/material';
 
+import { CharacterUtil } from "../../utils/character-util";
+
 export const SelectCharacterDialog = ({ isOpen = false, handleClose} : { isOpen: boolean; handleClose: () => void }) => {
+  const characters = CharacterUtil.getAllCharacters();
+
+  console.log('characters', characters);
   return (
     <Dialog open={isOpen} onClose={handleClose}>
       <DialogContent>
@@ -9,6 +14,11 @@ export const SelectCharacterDialog = ({ isOpen = false, handleClose} : { isOpen:
           <Grid item xs={12}>
             <TextField variant="outlined" label="Search"/>
           </Grid>
+          {characters.map(character => (
+            <Grid item xs={3} key={character.id}>
+              {character.name}
+            </Grid>
+          ))}
         </Grid>
       </DialogContent>
     </Dialog>

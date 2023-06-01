@@ -2,7 +2,11 @@ import React from "react";
 
 import { Character } from "../../utils/character-util";
 
-import { Tile, CharacterName } from "./SelectCharacterDialogTileStyles";
+import {
+  Wrapper,
+  Tile,
+  CharacterName,
+} from "./SelectCharacterDialogTileStyles";
 
 export const SelectCharacterDialogTile = ({
   character,
@@ -10,9 +14,9 @@ export const SelectCharacterDialogTile = ({
   character: Character;
 }) => {
   return (
-    <div>
-      <Tile bgImg={`/resources/${character.preview}`} />
+    <Wrapper>
+      <Tile bgImg={`/resources/${character.icon}`} />
       <CharacterName>{character.name}</CharacterName>
-    </div>
+    </Wrapper>
   );
 };

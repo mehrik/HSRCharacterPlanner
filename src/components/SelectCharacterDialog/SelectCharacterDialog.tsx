@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
+  Box,
   Grid,
   Dialog,
   DialogContent,
@@ -28,24 +29,30 @@ export const SelectCharacterDialog = ({
   }, []);
 
   return (
-    <Dialog open={isOpen} onClose={handleClose} maxWidth={"sm"}>
+    <Dialog open={isOpen} onClose={handleClose}>
       <DialogTitle>
-        <Grid container>
-          <Grid item xs={12}>
-            <TextField variant="outlined" label="Search" />
-          </Grid>
-        </Grid>
+        <Box sx={{ width: "100%" }}>
+          <TextField variant="outlined" label="Search" fullWidth />
+        </Box>
       </DialogTitle>
       <DialogContent>
         {characters.length && (
           <TilesWrapper>
-            <Grid container spacing={2}>
-              {characters.map((character) => (
-                <Grid item xs={3} key={character.id}>
-                  <SelectCharacterDialogTile character={character} />
-                </Grid>
-              ))}
-            </Grid>
+            <Box
+              sx={{
+                width: "100%",
+                paddingBottom: "24px",
+                paddingTop: "24px",
+              }}
+            >
+              <Grid container spacing={4}>
+                {characters.map((character) => (
+                  <Grid item xs={3} key={character.id}>
+                    <SelectCharacterDialogTile character={character} />
+                  </Grid>
+                ))}
+              </Grid>
+            </Box>
           </TilesWrapper>
         )}
       </DialogContent>

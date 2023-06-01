@@ -3,6 +3,8 @@ import { Grid, Dialog, DialogContent, TextField } from "@mui/material";
 
 import { CharacterUtil } from "../../utils/character-util";
 
+import { SelectCharacterDialogTile } from "./SelectCharacterDialogTile";
+
 export const SelectCharacterDialog = ({
   isOpen = false,
   handleClose,
@@ -22,7 +24,7 @@ export const SelectCharacterDialog = ({
           </Grid>
           {characters.map((character) => (
             <Grid item xs={3} key={character.id}>
-              {character.name}
+              <SelectCharacterDialogTile character={character} />
             </Grid>
           ))}
         </Grid>

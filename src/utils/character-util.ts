@@ -1,13 +1,13 @@
 import characters from "../resources/index_new/en/characters.json";
 
-type Eidolons = {
+export type Eidolons = {
   id: string;
   name: string;
   effect: string;
   icon: string;
 };
 
-type Skill = {
+export type Skill = {
   id: string;
   name: string;
   tag: string;
@@ -18,7 +18,7 @@ type Skill = {
   icon: string;
 };
 
-type Character = {
+export type Character = {
   id: string;
   name: string;
   rarity: string;

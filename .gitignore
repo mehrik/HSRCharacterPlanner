@@ -26,3 +26,5 @@ yarn-error.log*
 *.iml
 modules.xml
 vcs.xml
+eslint.xml
+Project_Default.xml

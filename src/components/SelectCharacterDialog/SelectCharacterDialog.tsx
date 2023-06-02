@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { debounce } from "lodash";
 import {
   Box,
   Dialog,
@@ -21,22 +22,45 @@ export const SelectCharacterDialog = ({
   handleClose: () => void;
 }) => {
   const [characters, setCharacters] = useState([] as Character[]);
+  const [filteredCharacters, setFilteredCharacters] = useState(
+    [] as Character[]
+  );
 
   useEffect(() => {
     fetch("./resources/index_new/en/characters.json")
       .then((res) => res.json())
-      .then((data) => setCharacters(CharacterUtil.getAllCharacters(data)));
+      .then((data) => {
+        setCharacters(CharacterUtil.getAllCharacters(data));
+        setFilteredCharacters(CharacterUtil.getAllCharacters(data));
+      });
   }, []);
+
+  const handleSearch = debounce((value) => {
+    if (!value) {
+      setFilteredCharacters(characters);
+    } else {
+      setFilteredCharacters(
+        characters.filter((c) =>
+          c.name.toLowerCase().includes(value.toLowerCase())
+        )
+      );
+    }
+  }, 500);
 
   return (
     <Dialog open={isOpen} onClose={handleClose}>
       <DialogTitle>
         <Box sx={{ width: "100%" }}>
-          <TextField variant="outlined" label="Search" fullWidth />
+          <TextField
+            variant="outlined"
+            label="Search"
+            fullWidth
+            onChange={(event) => handleSearch(event.target.value)}
+          />
         </Box>
       </DialogTitle>
       <DialogContent>
-        {characters.length && (
+        {filteredCharacters.length ? (
           <TilesWrapper>
             <Box
               sx={{
@@ -44,12 +68,16 @@ export const SelectCharacterDialog = ({
               }}
             >
               <ImageList cols={4}>
-                {characters.map((character) => (
+                {filteredCharacters.map((character) => (
                   <SelectCharacterDialogTile character={character} />
                 ))}
               </ImageList>
             </Box>
           </TilesWrapper>
+        ) : (
+          <Box sx={{ width: "100%" }}>
+            Oops, no one came up. Try searching again.
+          </Box>
         )}
       </DialogContent>
     </Dialog>

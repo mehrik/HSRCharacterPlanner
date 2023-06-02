@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import {
   Box,
-  Grid,
   Dialog,
   DialogContent,
   DialogTitle,
   TextField,
+  ImageList,
 } from "@mui/material";
 
 import { CharacterUtil, Character } from "../../utils/character-util";
@@ -41,17 +41,13 @@ export const SelectCharacterDialog = ({
             <Box
               sx={{
                 width: "100%",
-                paddingBottom: "24px",
-                paddingTop: "24px",
               }}
             >
-              <Grid container spacing={4}>
+              <ImageList cols={4}>
                 {characters.map((character) => (
-                  <Grid item xs={3} key={character.id}>
-                    <SelectCharacterDialogTile character={character} />
-                  </Grid>
+                  <SelectCharacterDialogTile character={character} />
                 ))}
-              </Grid>
+              </ImageList>
             </Box>
           </TilesWrapper>
         )}

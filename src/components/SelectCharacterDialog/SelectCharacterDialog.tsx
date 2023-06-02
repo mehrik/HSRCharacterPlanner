@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { debounce } from "lodash";
 import {
   Box,
@@ -25,6 +25,10 @@ export const SelectCharacterDialog = ({
   const charactersMap = useCharacters();
   const characters = CharacterUtil.getCharactersArray(charactersMap);
   const [filteredCharacters, setFilteredCharacters] = useState(characters);
+
+  useEffect(() => {
+    setFilteredCharacters(characters);
+  }, characters);
 
   const handleSearch = debounce((value) => {
     if (!value) {

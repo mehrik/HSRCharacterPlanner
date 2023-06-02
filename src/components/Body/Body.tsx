@@ -29,7 +29,12 @@ export const Body = () => {
           </Buttons>
         </Grid>
       </Grid>
-      <Grid container spacing={2}>
+      <Grid
+        container
+        spacing={2}
+        className="SUMMARY_AND_PLANNER"
+        sx={{ height: "calc(100% - 100px)" }} // TODO: Fix this
+      >
         <Grid item xs={3}>
           <Summary />
         </Grid>

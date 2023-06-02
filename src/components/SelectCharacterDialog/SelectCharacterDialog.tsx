@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 
 import { useCharacters } from "../../providers/CharactersProvider";
+import { CharacterUtil } from "../../utils/character-util";
 
 import { SelectCharacterDialogTile } from "./SelectCharacterDialogTile";
 import { TilesWrapper } from "./SelectCharacterDialogStyles";
@@ -21,7 +22,8 @@ export const SelectCharacterDialog = ({
   isOpen: boolean;
   handleClose: () => void;
 }) => {
-  const characters = useCharacters();
+  const charactersMap = useCharacters();
+  const characters = CharacterUtil.getCharactersArray(charactersMap);
   const [filteredCharacters, setFilteredCharacters] = useState(characters);
 
   const handleSearch = debounce((value) => {

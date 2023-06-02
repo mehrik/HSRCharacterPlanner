@@ -39,13 +39,15 @@ export type Character = {
   character_material: string;
 };
 
+export type CharacterMap = Record<string, Character>;
+
 const BLACKLIST_CHARACTERS = ["8001", "8002", "8003", "8004", "9100"];
 
 export const CharacterUtil = {
-  getAllCharacters(characters: any): Character[] {
+  getCharactersArray(characters: CharacterMap): Character[] {
     const keys = Object.keys(characters);
     return keys
-      .map((key) => (characters as any)[key])
+      .map((key) => (characters as CharacterMap)[key])
       .filter((character) => !BLACKLIST_CHARACTERS.includes(character.id));
   },
 };

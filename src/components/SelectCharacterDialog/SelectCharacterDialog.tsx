@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { debounce } from "lodash";
 import {
   Box,
@@ -9,7 +9,7 @@ import {
   ImageList,
 } from "@mui/material";
 
-import { CharacterUtil, Character } from "../../utils/character-util";
+import { useCharacters } from "../../providers/CharactersProvider";
 
 import { SelectCharacterDialogTile } from "./SelectCharacterDialogTile";
 import { TilesWrapper } from "./SelectCharacterDialogStyles";
@@ -21,19 +21,8 @@ export const SelectCharacterDialog = ({
   isOpen: boolean;
   handleClose: () => void;
 }) => {
-  const [characters, setCharacters] = useState([] as Character[]);
-  const [filteredCharacters, setFilteredCharacters] = useState(
-    [] as Character[]
-  );
-
-  useEffect(() => {
-    fetch("./resources/index_new/en/characters.json")
-      .then((res) => res.json())
-      .then((data) => {
-        setCharacters(CharacterUtil.getAllCharacters(data));
-        setFilteredCharacters(CharacterUtil.getAllCharacters(data));
-      });
-  }, []);
+  const characters = useCharacters();
+  const [filteredCharacters, setFilteredCharacters] = useState(characters);
 
   const handleSearch = debounce((value) => {
     if (!value) {

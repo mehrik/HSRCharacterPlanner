@@ -38,14 +38,18 @@ export const CharacterAvatar = ({
     <Box
       sx={{
         ...boxSize,
-        outline: "2px solid #FFFFFF",
-        borderRadius: "16px",
       }}
     >
       <img
         src={`/resources/${url}`}
         alt={name}
-        style={{ height: "100%", width: "100%", objectFit: "contain" }}
+        style={{
+          height: "100%",
+          width: "100%",
+          objectFit: "contain",
+          borderRadius: "16px",
+          outline: "2px solid #FFFFFF",
+        }}
       />
     </Box>
   );

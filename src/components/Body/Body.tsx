@@ -1,13 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Grid, Button } from "@mui/material";
 
 import { Summary } from "../Summary/Summary";
 import { SelectCharacterDialog } from "../SelectCharacterDialog/SelectCharacterDialog";
+import { CharacterFormDialog } from "../CharacterFormDialog/CharacterFormDialog";
+
+import { useCharacter } from "../../providers/CharacterProvider";
 
 import { Wrapper, Title, Buttons } from "./BodyStyles";
 
 export const Body = () => {
   const [isCharacterDialogOpen, setIsCharacterDialogOpen] = useState(false);
+  const [isCharacterFormDialogOpen, setIsCharacterFormDialogOpen] =
+    useState(false);
+  const { character, setCharacter } = useCharacter();
+
+  useEffect(() => {
+    if (character) {
+      setIsCharacterDialogOpen(false);
+      setIsCharacterFormDialogOpen(true);
+    } else {
+      setIsCharacterFormDialogOpen(false);
+    }
+  }, [character]);
 
   return (
     <Wrapper>
@@ -45,6 +60,13 @@ export const Body = () => {
       <SelectCharacterDialog
         isOpen={isCharacterDialogOpen}
         handleClose={() => setIsCharacterDialogOpen(false)}
+      />
+      <CharacterFormDialog
+        isOpen={isCharacterFormDialogOpen}
+        handleClose={() => {
+          setCharacter(null);
+          setIsCharacterFormDialogOpen(false);
+        }}
       />
     </Wrapper>
   );

@@ -4,7 +4,8 @@ import "./App.css";
 import { Layout } from "./components/Layout/Layout";
 import { Header } from "./components/Header/Header";
 import { Body } from "./components/Body/Body";
-import { CharactersProvider } from "./providers/CharactersProvider";
+import { AppProvider } from "./providers/AppProvider";
+import { CharacterProvider } from "./providers/CharacterProvider";
 
 const darkTheme = createTheme({
   palette: {
@@ -16,12 +17,14 @@ function App() {
   return (
     <ThemeProvider theme={darkTheme}>
       <div className="App">
-        <Layout>
-          <Header />
-          <CharactersProvider>
-            <Body />
-          </CharactersProvider>
-        </Layout>
+        <AppProvider>
+          <CharacterProvider>
+            <Layout>
+              <Header />
+              <Body />
+            </Layout>
+          </CharacterProvider>
+        </AppProvider>
       </div>
     </ThemeProvider>
   );

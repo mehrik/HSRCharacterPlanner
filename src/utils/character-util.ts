@@ -1,53 +1,36 @@
-export type Eidolons = {
-  id: string;
-  name: string;
-  effect: string;
-  icon: string;
-};
-
-export type Skill = {
-  id: string;
-  name: string;
-  tag: string;
-  max_level: number;
-  effect: string;
-  abridged_effect: string;
-  element_type: string;
-  icon: string;
+type GuideEvaluation = {
+  image: string;
+  link: string;
 };
 
 export type Character = {
-  id: string;
-  name: string;
-  rarity: string;
   element: string;
-  eidolons: Eidolons[];
-  skills: {
-    basic_atk: Skill;
-    skill: Skill;
-    ultimate: Skill;
-    talent: Skill;
-    technique: Skill;
-  };
-  skills_tree: string[];
+  guide_evaluation: GuideEvaluation[];
+  guide_material: string[];
+  guide_overview: string[];
   icon: string;
-  element_icon: string;
-  path_icon: string;
-  preview: string;
+  id: string;
+  max_sp: number;
+  name: string;
+  path: string;
   portrait: string;
-  character_overview: string;
-  character_material: string;
+  preview: string;
+  ranks: string[];
+  rarity: number;
+  skill_trees: string[];
+  skills: string[];
+  tag: string;
 };
 
-export type CharacterMap = Record<string, Character>;
+export type CharactersMap = Record<string | number, Character>;
 
 const BLACKLIST_CHARACTERS = ["8001", "8002", "8003", "8004", "9100"];
 
 export const CharacterUtil = {
-  getCharactersArray(characters: CharacterMap): Character[] {
+  formatCharactersList(characters: CharactersMap): Character[] {
     const keys = Object.keys(characters);
     return keys
-      .map((key) => (characters as CharacterMap)[key])
+      .map((key) => (characters as CharactersMap)[key])
       .filter((character) => !BLACKLIST_CHARACTERS.includes(character.id));
   },
 };

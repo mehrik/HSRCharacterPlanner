@@ -1,5 +1,10 @@
 import React from "react";
-import { Dialog, DialogContent, DialogTitle, Rating } from "@mui/material";
+import {
+  Dialog as MUIDialog,
+  DialogContent as MUIDialogContent,
+  DialogTitle as MUIDialogTitle,
+  Rating as MUIRating,
+} from "@mui/material";
 
 import { useCharacter } from "../../providers/CharacterProvider";
 import { useApp } from "../../providers/AppProvider";
@@ -31,8 +36,8 @@ export const CharacterFormDialog = ({
   }
 
   return (
-    <Dialog open={isOpen} onClose={handleClose}>
-      <DialogTitle>
+    <MUIDialog open={isOpen} onClose={handleClose}>
+      <MUIDialogTitle>
         <TitleWrapper>
           <AvatarWrapper>
             <CharacterAvatar
@@ -44,7 +49,7 @@ export const CharacterFormDialog = ({
           <CharacterInformationWrapper>
             <CharacterAndRarityWrapper>
               <CharacterName>{character.name}</CharacterName>
-              <Rating readOnly defaultValue={character.rarity} />
+              <MUIRating readOnly defaultValue={character.rarity} />
             </CharacterAndRarityWrapper>
             <CharacterAndPathWrapper>
               <Icon
@@ -58,8 +63,16 @@ export const CharacterFormDialog = ({
             </CharacterAndPathWrapper>
           </CharacterInformationWrapper>
         </TitleWrapper>
-      </DialogTitle>
-      <DialogContent>Character form</DialogContent>
-    </Dialog>
+      </MUIDialogTitle>
+      <MUIDialogContent>
+        <div>
+          <h3>Level</h3>
+          Current
+        </div>
+        <div>
+          <h3>Traces</h3>
+        </div>
+      </MUIDialogContent>
+    </MUIDialog>
   );
 };

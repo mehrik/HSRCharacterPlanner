@@ -52,5 +52,3 @@ export type Character = {
   skills: string[];
   tag: string;
 };
-
-export type characterIndex = Record<string | number, Character>;

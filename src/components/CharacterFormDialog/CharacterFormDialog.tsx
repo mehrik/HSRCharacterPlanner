@@ -52,12 +52,6 @@ export const CharacterFormDialog = ({
   const ultimate = currentSkills["Ultra"];
   const talent = currentSkills["Talent"];
 
-  console.log("CharacterFormDialog", {
-    character,
-    characterSkills,
-    currentSkills,
-  });
-
   return (
     <MUIDialog open={isOpen} onClose={handleClose} fullWidth={true}>
       <MUIDialogTitle>

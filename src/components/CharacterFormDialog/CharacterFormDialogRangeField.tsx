@@ -16,6 +16,13 @@ import {
   IconWrapper,
 } from "./CharacterFormDialogRangeFieldStyles";
 
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: "200px",
+    },
+  },
+};
 export const CharacterFormDialogRangeField = ({
   icon,
   type,
@@ -61,6 +68,7 @@ export const CharacterFormDialogRangeField = ({
               label={start}
               defaultValue={start}
               sx={{ "& legend": { display: "none" }, "& fieldset": { top: 0 } }}
+              MenuProps={MenuProps}
             >
               {currentMenuItems}
             </MUISelect>
@@ -73,6 +81,7 @@ export const CharacterFormDialogRangeField = ({
               label={end}
               defaultValue={end}
               sx={{ "& legend": { display: "none" }, "& fieldset": { top: 0 } }}
+              MenuProps={MenuProps}
             >
               {desiredMenuItems}
             </MUISelect>

@@ -1,12 +1,21 @@
 import React from "react";
 import { Box } from "@mui/material";
 
-export const Icon = ({ url, name }: { url: string; name: string }) => {
+export const Icon = ({
+  url,
+  name,
+  size = "48px",
+}: {
+  url: string;
+  name: string;
+  size: string;
+}) => {
   return (
     <Box
       sx={{
-        width: 48,
-        height: 48,
+        width: size,
+        height: size,
+        display: "inline-block",
       }}
     >
       <img

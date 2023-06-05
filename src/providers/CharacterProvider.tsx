@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from "react";
 
-import { Character } from "../utils/character-util";
+import { Character } from "../types";
 
 export interface CharacterContextType {
   character: Character | null;

@@ -2,41 +2,26 @@ import React, { createContext, useContext } from "react";
 import CHARACTERS from "../config/en/characters.json";
 import PATHS from "../config/en/paths.json";
 import ELEMENTS from "../config/en/elements.json";
+import CHARACTER_SKILLS from "../config/en/character_skills.json";
 
-import {
-  Character,
-  CharactersMap,
-  CharacterUtil,
-} from "../utils/character-util";
+import { Path, Element, Skill, Character } from "../types";
 
-type Path = {
-  id: string;
-  text: string;
-  name: string;
-  desc: string;
-  icon: string;
-};
-
-type Element = {
-  id: string;
-  name: string;
-  desc: string;
-  color: string;
-  icon: string;
-};
+import { CharacterUtil } from "../utils/character-util";
 
 interface AppContextType {
-  charactersMap: CharactersMap;
-  charactersList: Character[];
+  characterIndex: Record<string, Character>;
+  characterList: Character[];
   paths: Record<string, Path>;
   elements: Record<string, Element>;
+  characterSkills: Record<string, Skill>;
 }
 
 export const AppContext = createContext<AppContextType>({
-  charactersMap: {},
-  charactersList: [],
+  characterIndex: {},
+  characterList: [],
   paths: {},
   elements: {},
+  characterSkills: {},
 });
 
 export const useApp = () => {
@@ -44,17 +29,24 @@ export const useApp = () => {
 };
 
 export const AppProvider = ({ children }: { children: React.ReactNode }) => {
-  const charactersMap = CHARACTERS as Record<
+  const characterIndex = CHARACTERS as Record<
     keyof typeof CHARACTERS,
     Character
   >;
-  const charactersList = CharacterUtil.formatCharactersList(charactersMap);
+  const characterList = CharacterUtil.formatcharacterList(characterIndex);
   const paths = PATHS;
   const elements = ELEMENTS;
+  const characterSkills = CHARACTER_SKILLS;
 
   return (
     <AppContext.Provider
-      value={{ charactersMap, charactersList, paths, elements }}
+      value={{
+        characterIndex,
+        characterList,
+        paths,
+        elements,
+        characterSkills,
+      }}
     >
       {children}
     </AppContext.Provider>

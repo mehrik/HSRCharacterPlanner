@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, ImageListItem, ImageListItemBar } from "@mui/material";
 
-import { Character } from "../../utils/character-util";
+import { Character } from "../../types";
 import { useCharacter } from "../../providers/CharacterProvider";
 
 import { CharacterImage } from "./SelectCharacterDialogTileStyles";

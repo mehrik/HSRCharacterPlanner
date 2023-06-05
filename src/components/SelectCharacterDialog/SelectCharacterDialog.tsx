@@ -9,8 +9,8 @@ import {
   ImageList,
 } from "@mui/material";
 
+import { Character } from "../../types";
 import { useApp } from "../../providers/AppProvider";
-import { Character } from "../../utils/character-util";
 
 import { SelectCharacterDialogTile } from "./SelectCharacterDialogTile";
 import { TilesWrapper } from "./SelectCharacterDialogStyles";
@@ -22,19 +22,19 @@ export const SelectCharacterDialog = ({
   isOpen: boolean;
   handleClose: () => void;
 }) => {
-  const { charactersList } = useApp();
-  const [filteredCharacters, setFilteredCharacters] = useState(charactersList);
+  const { characterList } = useApp();
+  const [filteredCharacters, setFilteredCharacters] = useState(characterList);
 
   useEffect(() => {
-    setFilteredCharacters(charactersList);
-  }, charactersList);
+    setFilteredCharacters(characterList);
+  }, characterList);
 
   const handleSearch = debounce((value) => {
     if (!value) {
-      setFilteredCharacters(charactersList);
+      setFilteredCharacters(characterList);
     } else {
       setFilteredCharacters(
-        charactersList.filter((c: Character) =>
+        characterList.filter((c: Character) =>
           c.name.toLowerCase().includes(value.toLowerCase())
         )
       );

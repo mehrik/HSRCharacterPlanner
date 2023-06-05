@@ -29,3 +29,18 @@ export const CharacterAndRarityWrapper = styled.div`
 export const CharacterAndPathWrapper = styled.div`
   display: flex;
 `;
+
+const SectionLabel = styled.div`
+  display: inline-block;
+  padding: 8px 12px;
+  background: #9d3db3;
+  border-radius: 8px;
+`;
+
+export const SectionLabelLevel = styled(SectionLabel)`
+  margin-bottom: 8px;
+`;
+
+export const SectionLabelTraces = styled(SectionLabel)`
+  margin-bottom: 16px;
+`;

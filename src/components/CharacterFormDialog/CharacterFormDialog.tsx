@@ -21,7 +21,7 @@ import {
   CharacterInformationWrapper,
   CharacterName,
   CharacterAndRarityWrapper,
-  CharacterAndPathWrapper,
+  PathAndElementWrapper,
   SectionLabelLevel,
   SectionLabelTraces,
 } from "./CharacterFormDialogStyles";
@@ -68,7 +68,7 @@ export const CharacterFormDialog = ({
               <CharacterName>{character.name}</CharacterName>
               <MUIRating readOnly defaultValue={character.rarity} />
             </CharacterAndRarityWrapper>
-            <CharacterAndPathWrapper>
+            <PathAndElementWrapper>
               <Icon
                 url={paths[character.path].icon}
                 name={paths[character.path].name}
@@ -79,7 +79,7 @@ export const CharacterFormDialog = ({
                 name={elements[character.element].name}
                 size="48px"
               />
-            </CharacterAndPathWrapper>
+            </PathAndElementWrapper>
           </CharacterInformationWrapper>
         </TitleWrapper>
       </MUIDialogTitle>

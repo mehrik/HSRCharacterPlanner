@@ -13,6 +13,7 @@ export const AvatarWrapper = styled.div`
 export const CharacterInformationWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 `;
 
 export const CharacterName = styled.span`
@@ -26,7 +27,14 @@ export const CharacterAndRarityWrapper = styled.div`
   align-items: stretch;
 `;
 
-export const CharacterAndPathWrapper = styled.div`
+export const PathAndElementWrapper = styled.div`
+  display: flex;
+  div:first-child {
+    margin-right: 12px;
+  }
+`;
+
+export const RatingWrapper = styled.div`
   display: flex;
 `;
 

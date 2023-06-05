@@ -25,6 +25,7 @@ export const Description = styled.div`
 `;
 
 export const IconWrapper = styled.div`
-  display: inline-block;
+  display: flex;
+  align-items: center;
   margin-right: 4px;
 `;
